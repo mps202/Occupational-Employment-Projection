@@ -51,12 +51,13 @@ Results & Insights
 
 Occupational Breakdown: Projected jobs by occupation, using a sample staffing distribution.
 
-Occupation	                           % Share	                      Projected Jobs
-Assemblers and Fabricators	             7.5%	                          Calculated
-Machinists	                             2.5%                         	Calculated
-Industrial Engineers	                   1.5%	                          Calculated
-Production Supervisors	                 1.0%	                          Calculated
-Laborers and Freight Movers	             2.0%	                          Calculated
+
+               Occupation      Share (%)        Projected Jobs
+  Assemblers and Fabricators       7.5         957473
+                  Machinists       2.5         319158
+        Industrial Engineers       1.5         191495
+      Production Supervisors       1.0         127663
+ Laborers and Freight Movers       2.0         255326
 
 Visualizations include:
 
