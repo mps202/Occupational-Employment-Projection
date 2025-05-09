@@ -1,5 +1,13 @@
 # Occupational-Employment-Projection
 
+Disclaimer
+This analysis is intended for educational and exploratory purposes. While it uses real data and forecasting techniques, it does not match the depth, rigor, or data granularity of official U.S. Bureau of Labor Statistics (BLS) labor market projections.
+
+The occupational projections are based on a simplified staffing pattern and do not account for factors like demographic shifts, automation, policy changes, or industry-specific trends that are typically considered in BLS analyses.
+
+
+
+
 Dataset Descriptions
 1. manufacturing.csv
 Source: U.S. Bureau of Labor Statistics or similar source.
