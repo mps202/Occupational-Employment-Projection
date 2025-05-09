@@ -1,4 +1,4 @@
-# --- Load Required Libraries ---
+
 library(readr)
 library(dplyr)
 library(ggplot2)
@@ -6,9 +6,9 @@ library(lubridate)
 library(tidyr)
 library(tidyverse)
 
-# ---------------------------------------------------------
+
 # Step 1–2: Load & Visualize Employment
-# ---------------------------------------------------------
+
 employment_raw <- read_csv("manufacturing.csv")
 
 employment_clean <- employment_raw %>%
@@ -17,7 +17,7 @@ employment_clean <- employment_raw %>%
   mutate(
     month = as.integer(sub("M", "", period)),
     date = make_date(year, month, 1),
-    employment = value * 1000  # Convert from thousands to actual job counts
+    employment = value * 1000  
   ) %>%
   select(year, month, date, employment)
 
@@ -44,13 +44,13 @@ output_long <- output_raw %>%
   ) %>%
   mutate(
     year = as.integer(year),
-    output = output_millions * 1e6  # Convert from millions to actual dollars
+    output = output_millions * 1e6  
   ) %>%
   select(year, output)
 
-# ---------------------------------------------------------
+
 # Step 4: Aggregate & Compute Productivity
-# ---------------------------------------------------------
+
 # Aggregate to yearly average employment
 employment_yearly <- employment_clean %>%
   group_by(year) %>%
@@ -61,9 +61,9 @@ employment_yearly <- employment_clean %>%
 industry_metrics <- left_join(employment_yearly, output_long, by = "year") %>%
   mutate(productivity = output / avg_employment)
 
-# ---------------------------------------------------------
+
 # Step 5: Visualize Productivity
-# ---------------------------------------------------------
+
 ggplot(industry_metrics, aes(x = year, y = productivity)) +
   geom_line(color = "#D55E00", size = 1.2) +
   labs(
@@ -74,9 +74,9 @@ ggplot(industry_metrics, aes(x = year, y = productivity)) +
   scale_y_continuous(labels = scales::comma) +
   theme_minimal()
 
-# ---------------------------------------------------------
+
 # Step 6: Project Output (CAGR + Regression)
-# ---------------------------------------------------------
+
 # Method A: Compound Annual Growth Rate (CAGR)
 start_year <- 2012
 end_year <- 2022
@@ -107,9 +107,9 @@ ggplot(output_combined, aes(x = year, y = output)) +
   ) +
   theme_minimal()
 
-# ---------------------------------------------------------
+
 # Step 7: Predict Employment
-# ---------------------------------------------------------
+
 # Fit regression model: avg_employment ~ output + year
 employment_model <- lm(avg_employment ~ output + year, data = industry_metrics)
 summary(employment_model)
@@ -122,10 +122,10 @@ future_data <- data.frame(
 predicted_employment <- predict(employment_model, newdata = future_data)
 print(paste("Projected Manufacturing Employment in 2023:", round(predicted_employment)))
 
-# ---------------------------------------------------------
+
 # Step 8: Project Occupational Breakdown 
-# ---------------------------------------------------------
-# Example staffing pattern for manufacturing (replace with real data if available)
+
+# Example staffing pattern for manufacturing 
 staffing_pattern <- data.frame(
   occupation = c(
     "Assemblers and Fabricators", 
